@@ -1,26 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import child from "./child";
+import Sibling from './Sibling';
+class App extends React.Component{
+  constructor(props){
+    super(props)
+    this.state ={
+      name:"Emma Mbugua"
+    }
+    this.changeName = this.changeName.bind(this)
+  }
+  render(){
+    return(
+    <div>
+    <Sibling name = {this.state.name} />
+    <child changeName = {this.changeName}/>
+    <h1>{this.props.gender}</h1>
+   </div>
+    )
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+changeName(){
+  this.setState({
+    name:"Puray Mbugua"
+  })
+}
+}
+
+App.defaultProps = {
+  gender:"female",
+}
+
+App.defaultProps = {
+  // gender:React.propTypes.string
 }
 
 export default App;
